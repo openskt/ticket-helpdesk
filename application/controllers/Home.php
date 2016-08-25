@@ -19,8 +19,24 @@ class Home extends CI_Controller
 
     public function index() {
         // data passing to view
-        $data["page_title"] = "OPENTicket 1.0 | Ticket Listing";
-        $data["active_menu"] = "ticket";
+        $data['page_title'] = "OPENTicket 1.0 | Ticket Listing";
+        $data['active_menu'] = "ticket";
+
+        // query all ticket
+
+        $query  = $this->db->get('ticket');
+        $data['records'] = $query->result();
+        //$this->db->close();
+
+        //$query = $this->db->get('ticket');
+
+
+        //foreach ($query->result() as $row)
+        //{
+        //    echo "<h1>test:".$row->id;
+        //}
+        //exit();
+
 
         // load the view
         $this->load->view('head', $data);

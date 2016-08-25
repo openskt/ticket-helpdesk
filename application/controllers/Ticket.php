@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Ticket extends CI_Controller
 {
-    private $urgently = 'normal';
+    public $urgently = 'normal';
 
     function __construct()
     {
@@ -22,7 +22,11 @@ class Ticket extends CI_Controller
 
     public function index()
     {
-        $this->load->view('ticket');
+        $query  = $this->db->get('ticket');
+        $data['records'] = $query->result();
+        $this->db->close();
+
+        $this->load->view('ticket', $data);
     }
 
     public function add_new()
@@ -44,11 +48,21 @@ class Ticket extends CI_Controller
           'details' => $this->input->post('ticket_details'),
           'urgently' => $this->urgently
       );
+      $this->db->insert("ticket", $data);
+
+      // use helpers loadded via autoload.config
+      redirect('/home', 'refresh');
+
+      // Debug
+      /*
       echo "<html><h1>";
       if($this->input->post('urgently') == 'on')
       {
         echo "It's URGENT!<br>";
       }
+      var_dump($data);
+      echo "<hr>";
       die(var_dump($_POST));
+      */
     }
 }

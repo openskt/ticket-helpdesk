@@ -80,7 +80,7 @@
                   <th>ID</th>
                   <th>Urgently</th>
                   <th>Priority</th>
-                  <th>Post by</th>
+                  <th>Create by</th>
                   <th>Subject</th>
                   <th>Details</th>
                   <th>Due Date</th>
@@ -91,8 +91,33 @@
                   <th>End Datetime</th>
                   <th>Status</th>
                   <th>Assigned to</th>
+                  <th>Active?</th>
+                  <th>Failed?</th>
                 </tr>
+                <?php
 
+                foreach($records as $r) {
+                    echo "<tr>";
+                    echo "<td>".$r->id."</td>";
+                    echo "<td>".$r->urgently."</td>";
+                    echo "<td>".$r->priority."</td>";
+                    echo "<td>".$r->create_by."</td>";
+                    echo "<td>".$r->subject."</td>";
+                    echo "<td>".$r->details."</td>";
+                    echo "<td>".$r->due_date."</td>";
+                    echo "<td>".$r->end_user."</td>";
+                    echo "<td>".$r->source."</td>";
+                    echo "<td>".$r->create_datetime."</td>";
+                    echo "<td>".$r->start_datetime."</td>";
+                    echo "<td>".$r->end_datetime."</td>";
+                    echo "<td>".$r->status."</td>";
+                    echo "<td>".$r->assign_to."</td>";
+                    echo "<td>".$r->active."</td>";
+                    echo "<td>".$r->failed."</td>";
+                    echo "</tr>";
+                }
+                
+                 ?>
               </table>
             </div>
             <!-- /.box-body -->
