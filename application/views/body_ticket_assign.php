@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Ticket
-        <small>Listing</small>
+        <small>Assign</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,61 +18,28 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Active Ticket</h3> &nbsp;
+            <div class="box-header with-border">
+              <h3 class="box-title">Assign Ticket</h3> &nbsp;
+          </div>
+
+              <form>
+               <div class="form-group">
+                 <label for="email">Email address:</label>
+                 <input type="email" class="form-control" id="email">
+               </div>
+               <div class="form-group">
+                 <label for="pwd">Password:</label>
+                 <input type="password" class="form-control" id="pwd">
+               </div>
+               <div class="checkbox">
+                 <label><input type="checkbox"> Remember me</label>
+               </div>
+               <button type="submit" class="btn btn-default">Submit</button>
+             </form>
 
 
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">New Ticket</button>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="exampleModalLabel">New Ticket</h4>
-        </div>
-        <form action="/ticket/add_new" method="post">
-        <div class="modal-body">
-
-            <div class="form-group">
-              <label for="recipient-name" class="form-control-label">Subject:</label>
-              <input type="text" class="form-control" id="ticet_subject" name="ticket_subject" required>
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="form-control-label">Details:</label>
-              <textarea class="form-control" id="message-text" name="ticket_details" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <input type="checkbox" name="urgently"> Urgent
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="form-control-label">Attachment(s):</label>
-              <input id="input-1" type="file" class="file" name="atth_file">
-            </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Send request</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
 
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">

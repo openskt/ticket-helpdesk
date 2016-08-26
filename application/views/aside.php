@@ -6,6 +6,7 @@
       <div class="user-panel">
         <div class="pull-left image">
           <img src="<?php
+            echo base_url();
             echo $this->session->userdata('picture');
            ?>" class="img-circle" alt="User Image">
         </div>
@@ -24,7 +25,7 @@
         <li class="header">MAIN NAVIGATION</li>
 
         <li class="<?php if($active_menu == "ticket") echo "active "; ?>treeview">
-          <a href="ticket">
+          <a href="/home">
             <i class="fa fa-files-o"></i>
             <span>Tickets</span>
             <span class="pull-right-container">
