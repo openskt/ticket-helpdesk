@@ -75,6 +75,10 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
+              <pre><?php
+              echo var_dump($records);
+              exit();
+              ?>
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
@@ -90,14 +94,10 @@
                   <th>Create Datetime</th>
                   <th>Start Datetime</th>
                   <th>End Datetime</th>
-                  <th>ProjectID</th>
-                  <th>ReferTo</th>
                   <th>Assigned to</th>
-                  <th>Active?</th>
-                  <th>Hold?</th>
-                  <th>Failed?</th>
                 </tr>
                 <?php
+
 
                 foreach($records as $r) {
                     echo "<tr>";
@@ -114,8 +114,6 @@
                     echo "<td>".$r->create_datetime."</td>";
                     echo "<td>".$r->start_datetime."</td>";
                     echo "<td>".$r->end_datetime."</td>";
-                    echo "<td>".$r->project_id."</td>";
-                    echo "<td>".$r->refer_to."</td>";
                     echo "<td>";
                     if(isset($r->assign_to)){
                         echo $r->assign_to;
@@ -123,9 +121,6 @@
                         echo "<a href='".base_url()."ticket/assign/".$r->id."' class='btn btn-success' role='button'>Assign</a>";
                     }
                     echo "</td>";
-                    echo "<td>".$r->is_active."</td>";
-                    echo "<td>".$r->is_hold."</td>";
-                    echo "<td>".$r->is_failed."</td>";
                     echo "</tr>";
                 }
 
