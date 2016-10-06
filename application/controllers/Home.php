@@ -23,9 +23,9 @@ class Home extends CI_Controller
         $data['active_menu'] = "ticket";
 
         // query all ticket
-        $this->db->select('ticket.id, subject, details, fname');
+        //$this->db->select('ticket.id, subject, details, fname');
         $this->db->from('ticket');
-        $this->db->join('user', 'user.id = ticket.create_by', 'left');
+        //$this->db->join('user', 'user.id = ticket.create_by', 'left');
         $this->db->order_by('create_datetime', 'desc');
         $this->db->where('is_active', 1);
         $query  = $this->db->get();

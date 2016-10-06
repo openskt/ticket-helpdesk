@@ -25,7 +25,7 @@
         <li class="header">MAIN NAVIGATION</li>
 
         <li class="<?php if($active_menu == "ticket") echo "active "; ?>treeview">
-          <a href="/home">
+          <a href="/ticket">
             <i class="fa fa-files-o"></i>
             <span>Tickets</span>
             <span class="pull-right-container">

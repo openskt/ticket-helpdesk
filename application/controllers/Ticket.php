@@ -22,11 +22,27 @@ class Ticket extends CI_Controller
 
     public function index()
     {
-        $query  = $this->db->get('ticket');
-        $data['records'] = $query->result();
-        $this->db->close();
+        // data passing to view
+        $data['page_title'] = "OPENTicket 1.0 | Ticket Listing";
+        $data['active_menu'] = "ticket";
 
-        $this->load->view('ticket', $data);
+        // query all ticket
+        $this->db->select('ticket.id, status, urgently, priority, due_date, end_user, subject, details, b.fname as bfname, b.lname as blname, c.fname as cfname, c.lname as clname, create_datetime, start_datetime, end_datetime, assign_to');
+        $this->db->from('ticket');
+        $this->db->join('user as b', 'ticket.create_by = b.id', 'left');
+        $this->db->join('user as c', 'ticket.assign_to = c.id', 'left');
+        $this->db->order_by('create_datetime', 'desc');
+        $this->db->where('is_active', 1);
+        $query  = $this->db->get();
+        $data['records'] = $query->result();
+        //$this->db->close();
+
+        //$query = $this->db->get('ticket');
+
+        $this->load->view('head', $data);
+        $this->load->view('aside', $data);
+        $this->load->view('body_ticket', $data);
+        $this->load->view('footer');
     }
 
     public function assign()

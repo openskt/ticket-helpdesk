@@ -75,9 +75,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <pre><?php
+              <?php
+              /*
+              echo "</pre>";
               echo var_dump($records);
               exit();
+              */
               ?>
               <table class="table table-hover">
                 <tr>
@@ -90,7 +93,7 @@
                   <th>Details</th>
                   <th>Due Date</th>
                   <th>End User</th>
-                  <th>Source</th>
+                  <th>Assigned To</th>
                   <th>Create Datetime</th>
                   <th>Start Datetime</th>
                   <th>End Datetime</th>
@@ -98,19 +101,19 @@
                 </tr>
                 <?php
 
-
                 foreach($records as $r) {
                     echo "<tr>";
                     echo "<td>".$r->id."</td>";
                     echo "<td>".$r->status."</td>";
                     echo "<td>".$r->urgently."</td>";
                     echo "<td>".$r->priority."</td>";
-                    echo "<td>".$r->create_by."</td>";
+                    //echo "<td>".$r->create_by."</td>";
+                    echo "<td>".$r->bfname." ".$r->blname."</td>";
                     echo "<td>".$r->subject."</td>";
                     echo "<td>".$r->details."</td>";
                     echo "<td>".$r->due_date."</td>";
                     echo "<td>".$r->end_user."</td>";
-                    echo "<td>".$r->source."</td>";
+                    echo "<td>".$r->cfname." ".$r->clname."</td>";
                     echo "<td>".$r->create_datetime."</td>";
                     echo "<td>".$r->start_datetime."</td>";
                     echo "<td>".$r->end_datetime."</td>";
