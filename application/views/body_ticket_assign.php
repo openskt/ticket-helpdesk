@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Ticket
-        <small>Assign (edit by ton)</small>
+        <small>Assign</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -19,87 +19,160 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Assign Ticket</h3> &nbsp;
+              <h3 class="box-title">Assign Ticket #<?php echo $ticket->tid; ?></h3> &nbsp;
           </div>
 
-              <form>
-               <div class="form-group">
-                 <label for="email">Email address:</label>
-                 <input type="email" class="form-control" id="email">
-               </div>
-               <div class="form-group">
-                 <label for="pwd">Password:</label>
-                 <input type="password" class="form-control" id="pwd">
-               </div>
-               <div class="checkbox">
-                 <label><input type="checkbox"> Remember me</label>
-               </div>
-               <button type="submit" class="btn btn-default">Submit</button>
-             </form>
+          <!-- form start -->
+          <form class="form-horizontal">
+              <div class="box-body">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label class="col-md-2 control-label">Subject</label>
+                              <div class="col-md-9">
+                                  <input class="form-control" placeholder="Subject" value="<?php echo $ticket->subject; ?>">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-2 control-label">Details</label>
+                              <div class="col-md-9">
+                                  <textarea class="form-control" rows="13" placeholder="Details ..."><?php echo $ticket->details; ?></textarea>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group" hidden>
+                              <label class="col-md-3 control-label">ID</label>
+                              <div class="col-md-8">
+                                  <input class="form-control" placeholder="ID">
+                              </div>
+                          </div>
+                          <div class="form-group" hidden>
+                              <label class="col-md-3 control-label">Status</label>
+                              <div class="col-md-8">
+                                  <input class="form-control" placeholder="Status">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">Urgently</label>
+                              <div class="col-md-8">
+                              <div class="radio">
+                                <?php
+                                $ug = $ticket->urgently;
+                                ?>
+                                  <label>
+                                      <input type="radio" name="urgently" class="minimal" <?php if($ug == "normal") echo " checked"; ?>>
+                                      Normal
+                                  </label>
+                                  <label>
+                                      <input type="radio" name="urgently" class="minimal"<?php if($ug == "urgent") echo " checked"; ?>>
+                                      Urgent
+                                  </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">Priority</label>
+                              <div class="col-md-8">
+                              <div class="radio">
+                                <?php $pri = $ticket->priority; ?>
+                                  <label>
+                                      <input type="radio" name="priority" class="minimal" <?php if($pri == "normal") echo " checked"; ?>>
+                                      Normal
+                                  </label>
+                                  <label>
+                                      <input type="radio" name="priority" class="minimal" <?php if($pri == "medium") echo " checked"; ?>>
+                                      Medium
+                                  </label>
+                                  <label>
+                                      <input type="radio" name="priority" class="minimal" <?php if($pri == "high") echo " checked"; ?>>
+                                      High
+                                  </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">Due Date</label>
+                              <div class="col-md-8">
+                                <div class="radio">
+                                  <label>
+                                      <input type="radio" name="due_date" class="minimal" checked>
+                                      +24Hrs
+                                  </label>
+                                  <label>
+                                      <input type="radio" name="due_date" class="minimal">
+                                      +48Hrs
+                                  </label>
+                              </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">End User</label>
+                              <div class="col-md-8">
+                                  <input class="form-control" placeholder="End User">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">Project ID</label>
+                              <div class="col-md-8">
+
+                                    <select class="form-control select2" data-placeholder="Select Assigned To" style="width: 100%;">
+                                        <?php foreach ($projects as $p) {
+                                            # code...
+                                            echo "<option value=\".$p->id.\">".$p->project_name."</option>";
+                                        } ?>
+                                    </select>
+
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">Created by:</label>
+                              <div class="col-md-8">
+                                  <input class="form-control" placeholder=" asdf asdfasdfa" readonly="" value="<?php
+                                  echo $ticket->fname." ".$ticket->lname; ?>">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">Created D/T:</label>
+                              <div class="col-md-8">
+                                  <input type="text" class="form-control pull-right datepicker" readonly="" value="<?php echo $ticket->create_datetime; ?>">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-md-3 control-label">Assign to:</label>
+                              <div class="col-md-8">
+                                  <select class="form-control select2" data-placeholder="Select Assigned To" style="width: 100%;">
+                                      <?php foreach($staffs as $s) {
+                                        echo "<option value=\"".$s->id."\">".$s->fname." ".$s->lname."</option>";
+                                      } ?>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                  <div class="row">
+                      <div class="col-md-6">
+
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <div class="col-md-11">
+                                  <button type="submit" class="btn btn-primary pull-right btn-flat">Assign</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- /.box-footer -->
+          </form>
 
 
 
 
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>ID</th>
-                  <th>Status</th>
-                  <th>Urgently</th>
-                  <th>Priority</th>
-                  <th>Create by</th>
-                  <th>Subject</th>
-                  <th>Details</th>
-                  <th>Due Date</th>
-                  <th>End User</th>
-                  <th>Source</th>
-                  <th>Create Datetime</th>
-                  <th>Start Datetime</th>
-                  <th>End Datetime</th>
-                  <th>ProjectID</th>
-                  <th>ReferTo</th>
-                  <th>Assigned to</th>
-                  <th>Active?</th>
-                  <th>Hold?</th>
-                  <th>Failed?</th>
-                </tr>
-                <?php
 
-                foreach($records as $r) {
-                    echo "<tr>";
-                    echo "<td>".$r->id."</td>";
-                    echo "<td>".$r->status."</td>";
-                    echo "<td>".$r->urgently."</td>";
-                    echo "<td>".$r->priority."</td>";
-                    echo "<td>".$r->create_by."</td>";
-                    echo "<td>".$r->subject."</td>";
-                    echo "<td>".$r->details."</td>";
-                    echo "<td>".$r->due_date."</td>";
-                    echo "<td>".$r->end_user."</td>";
-                    echo "<td>".$r->source."</td>";
-                    echo "<td>".$r->create_datetime."</td>";
-                    echo "<td>".$r->start_datetime."</td>";
-                    echo "<td>".$r->end_datetime."</td>";
-                    echo "<td>".$r->project_id."</td>";
-                    echo "<td>".$r->refer_to."</td>";
-                    echo "<td>";
-                    if(isset($r->assign_to)){
-                        echo $r->assign_to;
-                    }else{
-                        echo "<a href='".base_url()."ticket/assign/".$r->id."' class='btn btn-success' role='button'>Assign</a>";
-                    }
-                    echo "</td>";
-                    echo "<td>".$r->is_active."</td>";
-                    echo "<td>".$r->is_hold."</td>";
-                    echo "<td>".$r->is_failed."</td>";
-                    echo "</tr>";
-                }
-
-                 ?>
-              </table>
-            </div>
-            <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>

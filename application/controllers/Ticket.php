@@ -47,12 +47,29 @@ class Ticket extends CI_Controller
 
     public function assign()
     {
+        // Load Compnay model
+        $this->load->model('Company_model');
+        $this->load->model('Ticket_model');
+
+        // get list of all doer staffs
+        $data['staffs'] = $this->Company_model->get_staff();
+
+        // get list of all active project
+        $data['projects'] = $this->Company_model->get_projects();
+
+        // get ticket info
+        $data['ticket'] = $this->Ticket_model->get_ticket($this->uri->segment('3'));
+
+        //echo "<pre>";
+        //echo var_dump($data['ticket']);
+        //exit();
         // echo "<html><h1>ticket id=".$this->uri->segment('3');
         // data passing to view
         $data['page_title'] = "OPENTicket 1.0 | Ticket Listing";
         $data['active_menu'] = "ticket";
 
         // query all ticket
+        /*
         $this->db->from('ticket');
         //$this->db->join('user', 'user.id = ticket.create_by', 'left');
         //$this->db->order_by('create_datetime', 'desc');
@@ -60,16 +77,14 @@ class Ticket extends CI_Controller
         $query  = $this->db->get();
         $data['records'] = $query->result();
         //$this->db->close();
-
+        */
         //$query = $this->db->get('ticket');
-
 
         //foreach ($query->result() as $row)
         //{
         //    echo "<h1>test:".$row->id;
         //}
         //exit();
-
 
         // load the view
         $this->load->view('head', $data);
@@ -100,7 +115,7 @@ class Ticket extends CI_Controller
       $this->db->insert("ticket", $data);
 
       // use helpers loadded via autoload.config
-      redirect('/home', 'refresh');
+      redirect('/ticket', 'refresh');
 
       // Debug
       /*

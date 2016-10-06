@@ -97,7 +97,7 @@
                   <th>Create Datetime</th>
                   <th>Start Datetime</th>
                   <th>End Datetime</th>
-                  <th>Assigned to</th>
+                  <th>Action</th>
                 </tr>
                 <?php
 
