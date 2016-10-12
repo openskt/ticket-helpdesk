@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Ticket
-        <small>Assign</small>
+        <small>Assign Step 1</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -23,7 +23,8 @@
           </div>
 
           <!-- form start -->
-          <form class="form-horizontal">
+
+            <form class="form-horizontal"  action="<?= site_url('ticket/assign_step2') ?>" method="post">
               <div class="box-body">
                   <div class="row">
                       <div class="col-md-6">
@@ -41,18 +42,7 @@
                           </div>
                       </div>
                       <div class="col-md-6">
-                          <div class="form-group" hidden>
-                              <label class="col-md-3 control-label">ID</label>
-                              <div class="col-md-8">
-                                  <input class="form-control" placeholder="ID">
-                              </div>
-                          </div>
-                          <div class="form-group" hidden>
-                              <label class="col-md-3 control-label">Status</label>
-                              <div class="col-md-8">
-                                  <input class="form-control" placeholder="Status">
-                              </div>
-                          </div>
+                          <input type="hidden" name="ticket_id" value="<?php echo $ticket->tid; ?>">
                           <div class="form-group">
                               <label class="col-md-3 control-label">Urgently</label>
                               <div class="col-md-8">
@@ -91,29 +81,10 @@
                               </div>
                             </div>
                           </div>
+
+
                           <div class="form-group">
-                              <label class="col-md-3 control-label">Due Date</label>
-                              <div class="col-md-8">
-                                <div class="radio">
-                                  <label>
-                                      <input type="radio" name="due_date" class="minimal" checked>
-                                      +24Hrs
-                                  </label>
-                                  <label>
-                                      <input type="radio" name="due_date" class="minimal">
-                                      +48Hrs
-                                  </label>
-                              </div>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-md-3 control-label">End User</label>
-                              <div class="col-md-8">
-                                  <input class="form-control" placeholder="End User">
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <label class="col-md-3 control-label">Project ID</label>
+                              <label class="col-md-3 control-label">Project:</label>
                               <div class="col-md-8">
 
                                     <select class="form-control select2" data-placeholder="Select Assigned To" style="width: 100%;">
@@ -141,7 +112,7 @@
                           <div class="form-group">
                               <label class="col-md-3 control-label">Assign to:</label>
                               <div class="col-md-8">
-                                  <select class="form-control select2" data-placeholder="Select Assigned To" style="width: 100%;">
+                                  <select name="assign_to" class="form-control select2" data-placeholder="Select Assigned To" style="width: 100%;">
                                       <?php foreach($staffs as $s) {
                                         echo "<option value=\"".$s->id."\">".$s->fname." ".$s->lname."</option>";
                                       } ?>

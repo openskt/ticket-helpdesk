@@ -45,7 +45,26 @@ class Ticket extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function assign()
+    public function assign_step2()
+    {
+        // Load model to save STEP1 data
+        //
+        //
+
+
+        $data['ticket_id'] = $this->input->post('ticket_id');
+        // data passing to view
+        $data['page_title'] = "OPENTicket 1.0 | Ticket Assign Step2";
+        $data['active_menu'] = "ticket";
+
+        // load the view
+        $this->load->view('head2', $data);
+        $this->load->view('aside', $data);
+        $this->load->view('body_ticket_assign_step2', $data);
+        $this->load->view('footer2');
+    }
+
+    public function assign_step1()
     {
         // Load Compnay model
         $this->load->model('Company_model');
@@ -60,36 +79,14 @@ class Ticket extends CI_Controller
         // get ticket info
         $data['ticket'] = $this->Ticket_model->get_ticket($this->uri->segment('3'));
 
-        //echo "<pre>";
-        //echo var_dump($data['ticket']);
-        //exit();
-        // echo "<html><h1>ticket id=".$this->uri->segment('3');
         // data passing to view
-        $data['page_title'] = "OPENTicket 1.0 | Ticket Listing";
+        $data['page_title'] = "OPENTicket 1.0 | Ticket Assign Step1";
         $data['active_menu'] = "ticket";
-
-        // query all ticket
-        /*
-        $this->db->from('ticket');
-        //$this->db->join('user', 'user.id = ticket.create_by', 'left');
-        //$this->db->order_by('create_datetime', 'desc');
-        $this->db->where('id', $this->uri->segment('3'));
-        $query  = $this->db->get();
-        $data['records'] = $query->result();
-        //$this->db->close();
-        */
-        //$query = $this->db->get('ticket');
-
-        //foreach ($query->result() as $row)
-        //{
-        //    echo "<h1>test:".$row->id;
-        //}
-        //exit();
 
         // load the view
         $this->load->view('head', $data);
         $this->load->view('aside', $data);
-        $this->load->view('body_ticket_assign', $data);
+        $this->load->view('body_ticket_assign_step1', $data);
         $this->load->view('footer');
     }
 

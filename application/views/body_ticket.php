@@ -121,7 +121,7 @@
                     if(isset($r->assign_to)){
                         echo $r->assign_to;
                     }else{
-                        echo "<a href='".base_url()."ticket/assign/".$r->id."' class='btn btn-success' role='button'>Assign</a>";
+                        echo "<a href='".base_url()."ticket/assign_step1/".$r->id."' class='btn btn-success' role='button'>Assign</a>";
                     }
                     echo "</td>";
                     echo "</tr>";
