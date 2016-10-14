@@ -19,30 +19,28 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Assign Ticket #<?php echo $ticket_id; ?></h3> &nbsp;
+              <h3 class="box-title">Due of this Ticket #<?php echo $ticket_id; ?></h3> &nbsp;
           </div>
 
           <!-- form start -->
           <form class="form-horizontal" action="ticket/assign_step3" method="post">
-
-
+              <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
 
               <div class="box-body">
                   <div class="row">
 
-                      <!-- Date and time range -->
-                                    <div class="form-group">
-                                      <label>Date and time range:</label>
+                         <div class="col-md-8">
+                             <div id="datetimepicker12"></div>
+                         </div>
 
-                                      <div class="input-group">
-                                        <div class="input-group-addon">
-                                          <i class="fa fa-clock-o"></i>
-                                        </div>
-                                        <input type="text" class="form-control pull-right" id="reservationtime">
-                                      </div>
-                                      <!-- /.input group -->
-                                    </div>
-                                    <!-- /.form group -->
+                         <script type="text/javascript">
+                             $(function () {
+                                 $('#datetimepicker12').datetimepicker({
+                                     inline: true,
+                                     sideBySide: true
+                                 });
+                             });
+                         </script>
 
                   </div>
               </div>
