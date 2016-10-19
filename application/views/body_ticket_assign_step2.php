@@ -30,7 +30,7 @@
                   <div class="row">
 
                          <div class="col-md-8">
-                             <div id="datetimepicker12"></div>
+                             <div id="datetimepicker12" name="due_dt"></div>
                          </div>
 
                          <script type="text/javascript">
