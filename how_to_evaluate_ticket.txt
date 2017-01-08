@@ -1,1 +1,13 @@
+ticket start => evaluate by sup/manager or router => got score 1
+ticket closed => sup+manager or router+user evaluate how many % staff should get from this task => got points
+post point => staff commit the point => end
+=> if not => how much you want more % => but have to note out
+
+key of point
+1. ความยากง่ายของงาน ง่าย ปกติ ยาก
+ความต้องใช้ ทักษะ ต่ำ กลาง สูง
+ต้องใช้ความรู้ ต่ำ กลาง สูง
+เกี่ยวกับหน้าที่โดยตรงหรือเปล่า ถ้าไม่เกี่ยว กับ jd ตัองให้เยอะขึ้น
+ต้องใข้เวลาทำ น้อย ปานกลาง นาน
+ทำงานนี้แล้วมีผลกับโครงการ โดยรวม น้อย ปานกลาง มาก
 
